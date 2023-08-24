@@ -1,0 +1,607 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
+:root {
+  --box: 60px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Kalam", cursive;
+}
+
+body {
+  width: 100%;
+}
+button:hover {
+  cursor: pointer;
+}
+
+.container {
+  margin: auto;
+  width: min(1440px, 100%);
+  display: flex;
+  justify-content: center;
+}
+.boardArea {
+  padding: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bigBoard {
+  width: calc(var(--box) * 10);
+  max-width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+}
+.gamePlayers {
+  flex: 1;
+  padding: 24px;
+}
+.playersBox {
+  background-color: #ffffff6b;
+  height: 100%;
+  border-radius: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 24px;
+}
+.playerCard {
+  border-radius: 12px;
+  background-color: #ffffff88;
+  padding: 24px;
+}
+.level1 {
+  display: flex;
+  justify-content: space-between;
+}
+.level1 img {
+  width: 120px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+.diceBox {
+  width: 120px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.diceBox:hover {
+  cursor: pointer;
+}
+.diceImg {
+  font-size: 96px;
+  opacity: 0;
+  transform: rotate(360deg) scale(0);
+  animation: zoomInRotate 1.5s 1 forwards;
+}
+@keyframes zoomInRotate {
+  0% {
+    opacity: 0;
+    transform: rotate(360deg) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+#dice1 {
+  color: #ff3737;
+}
+#dice2 {
+  color: #2455db;
+}
+#dice3 {
+  color: #2c974b;
+}
+#dice4 {
+  color: #ffa116;
+}
+.level2 {
+  width: 100%;
+  margin: 16px 0 0 0;
+}
+.level2 div {
+  background-color: #ffffff88;
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: normal;
+}
+.board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 600px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  box-shadow: -9px -9px 20px 5px rgba(0, 0, 0, 0.1),
+    9px 9px 20px 5px rgba(0, 0, 0, 0.1);
+}
+
+.potsBoard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: calc(var(--box) * 10);
+  max-width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.box {
+  max-width: 100%;
+  aspect-ratio: 1;
+  width: min(100%, 60px);
+  flex-wrap: wrap;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  /* border: 1px solid; */
+}
+.pot {
+  width: calc(var(--box) / 3);
+  aspect-ratio: 1;
+  border-radius: 100%;
+  transform: scale(1);
+  margin: 0;
+  position: relative;
+  animation: zoomIn 0.5s infinite;
+}
+.pot::after {
+  content: "";
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  z-index: 2;
+  position: absolute;
+  top: -6px;
+  left: 4px;
+}
+.redPot {
+  background: radial-gradient(
+    circle at 50% 120%,
+    #f68181,
+    #ef7676 10%,
+    #940505 80%,
+    #450606 100%
+  );
+}
+.redPot::after {
+  background: radial-gradient(
+    circle at 50% 120%,
+    #f68181,
+    #ef7676 10%,
+    #940505 80%,
+    #450606 100%
+  );
+}
+.bluePot {
+  background: radial-gradient(
+    circle at 50% 120%,
+    #8183f6,
+    #8176ef 10%,
+    #051a94 80%,
+    #050606 100%
+  );
+}
+.bluePot::after {
+  background: radial-gradient(
+    circle at 50% 120%,
+    #8183f6,
+    #8176ef 10%,
+    #051a94 80%,
+    #050606 100%
+  );
+}
+.greenPot {
+  background: radial-gradient(
+    circle at 50% 120%,
+    #8ff681,
+    #b7ef76 10%,
+    #059424 80%,
+    #050605 100%
+  );
+}
+.greenPot::after {
+  background: radial-gradient(
+    circle at 50% 120%,
+    #8ff681,
+    #b7ef76 10%,
+    #059424 80%,
+    #050605 100%
+  );
+}
+.yellowPot {
+  background: radial-gradient(
+    circle at 50% 120%,
+    #f4f681,
+    #efe776 10%,
+    #948a05 80%,
+    #060605 100%
+  );
+}
+.yellowPot::after {
+  background: radial-gradient(
+    circle at 50% 120%,
+    #f4f681,
+    #efe776 10%,
+    #948a05 80%,
+    #060605 100%
+  );
+}
+.exitPot {
+  width: calc(var(--box) / 3);
+  aspect-ratio: 1;
+  border-radius: 100%;
+  transform: scale(0.5);
+  animation: zoomOut 1s 1 forwards;
+}
+.redExit {
+  background-color: #ff6b6b;
+}
+.blueExit {
+  background-color: #8176ef;
+}
+.greenExit {
+  background-color: #b7ef76;
+}
+.yellowExit {
+  background-color: #efe776;
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+@keyframes zoomOut {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes shadeIn {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    filter: hue-rotate(1);
+    transform: scale(0.8);
+  }
+}
+.screen {
+  width: 100%;
+  min-height: 100dvh;
+  padding: 16px;
+  background-image: url("images/screen1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media only screen and (max-width: 1360px) {
+  .container {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .boardArea {
+    padding: 0px;
+  }
+  .gamePlayers {
+    padding: 0px;
+    width: min(600px, 100%);
+  }
+  .board {
+    width: 100%;
+  }
+  .playersBox {
+    border-radius: 0;
+    gap: 6px;
+    padding: 6px;
+    overflow: hidden;
+  }
+  .playerCard {
+    border-radius: 0px;
+    padding: 12px;
+  }
+  .level1 img {
+    width: 64px;
+  }
+  .diceBox {
+    width: 40px;
+  }
+  .diceBox:hover {
+    cursor: pointer;
+  }
+  .diceImg {
+    font-size: 40px;
+  }
+  .level2 {
+    width: 100%;
+    margin: 6px 0 0 0;
+  }
+  .level2 div {
+    background-color: unset;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+}
+
+/* -------------------------------------- */
+
+/* Screen 1 */
+
+.s1-card {
+  backdrop-filter: blur(2px);
+  background-color: #ffffff6b;
+  width: min(680px, 100%);
+  padding: 32px;
+  margin: 32px auto;
+  text-align: center;
+  border-radius: 16px;
+}
+.s1-card h1 {
+  font-size: 48px;
+  color: #333;
+}
+.s1-card .subHeading {
+  font-size: 24px;
+  font-weight: 300;
+  margin: 16px 0;
+}
+.choose {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 16px;
+  margin: 16px 0;
+}
+.selectBox {
+  aspect-ratio: 1;
+  background-color: #ffffff88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 95% 10% 86% 14% / 10% 90% 10% 90%;
+  transition: all 0.5s;
+}
+.selected {
+  background: linear-gradient(45deg, #2455db 10%, #6d94ff);
+  color: #fff;
+}
+.selectBox:hover {
+  cursor: pointer;
+  box-shadow: #8d8d8d 0px 20px 30px -10px;
+  transition: all 0.5s;
+}
+.selectBox span:first-child {
+  font-size: 64px;
+  display: block;
+  line-height: 96px;
+}
+.selectBox span:last-child {
+  font-size: 24px;
+  line-height: 12px;
+  font-weight: 300;
+}
+.startBtn {
+  border-radius: 95% 10% 86% 14% / 10% 90% 10% 90%;
+  width: 280px;
+  height: 72px;
+  border: none;
+  font-size: 32px;
+  background-color: #2455db;
+  color: #fff;
+  margin: 32px 0;
+}
+.info {
+  font-size: 20px;
+  font-weight: 300;
+}
+@media only screen and (max-width: 768px) {
+  /* Tablet */
+  .s1-card {
+    padding: 16px;
+    margin: 16px auto;
+  }
+  .s1-card h1 {
+    font-size: 32px;
+  }
+  .s1-card .subHeading {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* Tablet Vertical*/
+  .s1-card {
+    margin: 0 auto;
+  }
+  .selectBox span:first-child {
+    font-size: 48px;
+    line-height: 48px;
+  }
+  .choose {
+    column-gap: 4px;
+  }
+  .selectBox span:last-child {
+    font-size: 16px;
+    line-height: 12px;
+  }
+  .startBtn {
+    width: 140px;
+    height: 56px;
+    font-size: 24px;
+    margin: 16px 0;
+  }
+  .info {
+    font-size: 14px;
+  }
+  .pot {
+    width: calc(var(--box) / 5);
+  }
+  .pot::after {
+    width: 7.2px;
+    top: -3.6px;
+    left: 2.4px;
+  }
+}
+
+/* ---------------------------------- */
+
+/* Screen 2 */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.card {
+  background-color: #ffffff88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 16px;
+  transition: all 0.5s;
+}
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.selectImage img {
+  width: 120px;
+  border-radius: 100%;
+}
+.arrow {
+  aspect-ratio: 1;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 6px;
+  user-select: none;
+  background-color: #ffffff8e;
+}
+.arrow:hover {
+  cursor: pointer;
+}
+.arrow span {
+  font-size: 32px;
+}
+.inputName {
+  width: 100%;
+  padding: 16px;
+}
+.inputName input {
+  width: 100%;
+  background-color: #ffffff88;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.inputName input:focus {
+  outline: none;
+  box-shadow: none;
+}
+/* Player Red */
+#profile1 {
+  border: 5px solid #ff3737;
+}
+/* Player Blue */
+#profile2 {
+  border: 5px solid #4267b2;
+}
+/* Player Green */
+#profile3 {
+  border: 5px solid #2c974b;
+}
+/* Player Yellow */
+#profile4 {
+  border: 5px solid #ffa116;
+}
+.next {
+  background-color: #2c974b;
+}
+@media only screen and (max-width: 768px) {
+  /* Tablet */
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 8px;
+  }
+}
+
+/* --------------------------------- */
+/* Screen 3 */
+
+#screen3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  width: 100%;
+  height: 100dvh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #000000a8;
+  padding: 16px;
+}
+.modalBody {
+  width: min(680px, 100%);
+  background-color: #ffffff88;
+  backdrop-filter: blur(5px);
+  margin: 0px auto;
+  border-radius: 24px;
+  padding: 16px;
+  text-align: center;
+}
+.modalBody img {
+  width: 240px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+.modalBody h1 {
+  margin: 32px 0 0 0;
+  font-size: 24px;
+}
+.hide {
+  display: none;
+}
+#wname {
+  color: #2455db;
+}

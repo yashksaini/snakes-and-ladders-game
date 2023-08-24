@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snakes and Ladders Game | 2023 | Yash Kumar Saini</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Icon -->
+    <link rel="icon" type="image/x-icon" href="images/icon.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="screen" id="screen1">
+      <!-- Add a resume button so game can be played again -->
+      <!-- Initial Stage for selection players count -->
+      <div class="s1-card">
+        <h1>Snakes and Ladder Game</h1>
+        <p class="subHeading">Rise Above the Snakes, Aim for the Ladders!</p>
+        <div class="choose">
+          <div class="selectBox selected" onclick="selectPlayers(2)">
+            <span>2</span> <span>Players</span>
+          </div>
+          <div class="selectBox" onclick="selectPlayers(3)">
+            <span>3</span> <span>Players</span>
+          </div>
+          <div class="selectBox" onclick="selectPlayers(4)">
+            <span>4</span> <span>Players</span>
+          </div>
+        </div>
+        <button class="startBtn" onclick="start()">START</button>
+        <p class="info">Developed by Yash Kumar Saini @ 2023</p>
+      </div>
+    </div>
+    <div class="screen" id="screen2">
+      <!-- Second Stage for adding names and user icons for the players -->
+      <div class="s1-card">
+        <h1>Add Names and profile</h1>
+        <div class="cards">
+          <!-- Player 1 -->
+          <div class="card" id="card1">
+            <div class="profile">
+              <div class="arrow" onclick="updateUserProfile(1,2)">
+                <span class="material-symbols-outlined">
+                  keyboard_arrow_left
+                </span>
+              </div>
+              <div class="selectImage">
+                <img src="images/avatars/1.png" id="profile1" />
+              </div>
+              <div class="arrow" onclick="updateUserProfile(1,1)">
+                <span class="material-symbols-outlined">
+                  keyboard_arrow_right
+                </span>
+              </div>
+            </div>
+            <div class="inputName">
+              <input
+                onclick="this.select()"
+                oninput="changeName(1)"
+                onblur="updateValue(1)"
+                type="text"
+                placeholder="Write name here..."
+                value="Player1"
+                id="name1"
+              />
+            </div>
+          </div>
+          <!-- Player 2 -->
+          <div class="card" id="card2">
+            <div class="profile">
+              <div class="arrow" onclick="updateUserProfile(2,2)">
+                <span class="material-symbols-outlined">
+                  keyboard_arrow_left
+                </span>
+              </div>
+              <div class="selectImage">
+                <img src="images/avatars/0.png" id="profile2" />
+              </div>
+              <div class="arrow" onclick="updateUserProfile(2,1)">
+                <span class="material-symbols-outlined">
+                  keyboard_arrow_right
+                </span>
+              </div>
+            </div>
+            <div class="inputName">
+              <input
+                onclick="this.select()"
+                oninput="changeName(2)"
+                onblur="updateValue(2)"
+                type="text"
+                placeholder="Write name here..."
+                value="Player2"
+                id="name2"
+              />
+            </div>
+          </div>
+          <!-- Player 3 -->
+          <div class="card" id="card3">
+            <div class="profile">
+              <div class="arrow" onclick="updateUserProfile(3,2)">
+                <span class="material-symbols-outlined">
+                  keyboard_arrow_left
+                </span>
+              </div>
+              <div class="selectImage">
+                <img src="images/avatars/3.png" id="profile3" />
+              </div>
+              <div class="arrow" onclick="updateUserProfile(3,1)">
+                <span class="material-symbols-outlined">
+                  keyboard_arrow_right
+                </span>
+              </div>
+            </div>
+            <div class="inputName">
+              <input
+                onclick="this.select()"
+                oninput="changeName(3)"
+                onblur="updateValue(3)"
+                type="text"
+                placeholder="Write name here..."
+                value="Player3"
+                id="name3"
+              />
+            </div>
+          </div>
+          <!-- Player 4 -->
+          <div class="card" id="card4">
+            <div class="profile">
+              <div class="arrow" onclick="updateUserProfile(4,2)">
+                <span class="material-symbols-outlined">
+                  keyboard_arrow_left
+                </span>
+              </div>
+              <div class="selectImage">
+                <img src="images/avatars/4.png" id="profile4" />
+              </div>
+              <div class="arrow" onclick="updateUserProfile(4,1)">
+                <span class="material-symbols-outlined">
+                  keyboard_arrow_right
+                </span>
+              </div>
+            </div>
+            <div class="inputName">
+              <input
+                onclick="this.select()"
+                oninput="changeName(4)"
+                onblur="updateValue(4)"
+                type="text"
+                placeholder="Write name here..."
+                value="Player4"
+                id="name4"
+              />
+            </div>
+          </div>
+        </div>
+        <button class="startBtn" onclick="back()">Back</button>
+        <button class="startBtn next" onclick="next()">NEXT</button>
+      </div>
+    </div>
+    <div class="screen" id="screen3">
+      <!-- Game board player status and many more -->
+      <div class="container">
+        <div class="boardArea">
+          <div class="bigBoard">
+            <img src="images/board.png" class="board" />
+            <div class="potsBoard" id="board"></div>
+          </div>
+        </div>
+        <div class="gamePlayers">
+          <div class="playersBox">
+            <div class="playerCard" id="playerCard1">
+              <div class="level1">
+                <img src="images/avatars/1.png" id="avatar1" />
+                <div id="dice1" class="diceBox" onclick="rollDice(1)">
+                  <i class="diceImg fas fa-dice-one"></i>
+                </div>
+              </div>
+              <div class="level2">
+                <div id="displayName1">Player1</div>
+              </div>
+            </div>
+            <div class="playerCard" id="playerCard2">
+              <div class="level1">
+                <img src="images/avatars/2.png" id="avatar2" />
+                <div id="dice2" class="diceBox" onclick="rollDice(2)">
+                  <i class="diceImg fas fa-dice-one"></i>
+                </div>
+              </div>
+              <div class="level2">
+                <div id="displayName2">Player2</div>
+              </div>
+            </div>
+            <div class="playerCard" id="playerCard4">
+              <div class="level1">
+                <img src="images/avatars/4.png" id="avatar4" />
+                <div id="dice4" class="diceBox" onclick="rollDice(4)">
+                  <i class="diceImg fas fa-dice-one"></i>
+                </div>
+              </div>
+              <div class="level2">
+                <div id="displayName4">Player4</div>
+              </div>
+            </div>
+            <div class="playerCard" id="playerCard3">
+              <div class="level1">
+                <img src="images/avatars/3.png" id="avatar3" />
+                <div id="dice3" class="diceBox" onclick="rollDice(3)">
+                  <i class="diceImg fas fa-dice-one"></i>
+                </div>
+              </div>
+              <div class="level2">
+                <div id="displayName3">Player3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal hide" id="modal">
+      <div class="modalBody">
+        <img src="images/avatars/0.png" id="wimg" />
+        <h1>Winner is <span id="wname"></span></h1>
+        <button class="startBtn" onclick="window.location.reload()">
+          New Game
+        </button>
+      </div>
+    </div>
+    <audio src="audio/drop.mp3" id="drop" style="display: none"></audio>
+    <audio src="audio/ladder.mp3" id="ladder" style="display: none"></audio>
+    <audio src="audio/snake.mp3" id="snake" style="display: none"></audio>
+    <audio src="audio/dice.mp3" id="diceAudio" style="display: none"></audio>
+    <audio src="audio/success.mp3" id="success" style="display: none"></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
